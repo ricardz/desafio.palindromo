@@ -11,7 +11,7 @@
     <title>Palíndromo</title>
   </head>
 
-  <body class="mt-5 h-50">
+  <body class="mt-5">
     
       <h1 class="display-4 text-center"> Palíndromo </h1>
       

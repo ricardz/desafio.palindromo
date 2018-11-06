@@ -15,25 +15,20 @@
 				  $palindromo = "é um palíndromo.";
 				  $naoPalindromo = "não é uma palíndromo.";
 
-				  //substituir letras acentuadas por sem acentos
+				  //substitui letras acentuadas por sem acentos
 				  $this->frase = preg_replace(array("/(á|à|ã|â|ä)/","/(Á|À|Ã|Â|Ä)/","/(é|è|ê|ë)/","/(É|È|Ê|Ë)/","/(í|ì|î|ï)/","/(Í|Ì|Î|Ï)/","/(ó|ò|õ|ô|ö)/","/(Ó|Ò|Õ|Ô|Ö)/","/(ú|ù|û|ü)/","/(Ú|Ù|Û|Ü)/","/(ñ)/","/(Ñ)/"),explode(" ","a A e E i I o O u U n N"),$this->frase);
 
-			      //deixa a string toda em maiscula
+				  //retira todos os símbolos que não são alfanuméricos
+				  $this->frase = preg_replace("/[^a-zA-Z0-9]/", "", $this->frase);
+
+			      //deixa a string toda em maiúscula
 			      $this->frase = strtoupper($this->frase);
 
-			      //array que representa os caracteres que vão ser removidos
-			      $retiraCaracter = array(" ", ",", ".", "-", ":","!");
-
-			      $novafrase = str_ireplace('"', '', $this->frase);
-
-			      //retira os caracteres
-			      $novafrase = str_ireplace($retiraCaracter, "", $this->frase);
-
-			      //deixa a string ao contrário
-			      $fraseReversa = strrev($novafrase);
+			      //deixa a string ao contrário e salva em outra variável
+			      $fraseReversa = strrev($this->frase);
 
 			      //compara as strings
-			      if($novafrase === $fraseReversa){
+			      if($this->frase === $fraseReversa){
 			      	return $palindromo;			        
 			      	}
 
@@ -43,14 +38,15 @@
 			      
 				}
 
-				 public function getFrase() {
-					return $this->frase;
-					}
-				 
-				public function setFrase($frase) {
-					$this->frase = $frase;
-					}
+			public function getFrase() 
+			{
+				return $this->frase;
 			}
-					
+				 
+			public function setFrase($frase) 
+			{
+				$this->frase = $frase;
+			}
 
+		}
 ?>
